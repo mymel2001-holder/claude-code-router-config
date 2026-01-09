@@ -1,0 +1,31 @@
+{
+  "LOG": true,
+  "CLAUDE_PATH": "/usr/bin/claude",
+  "HOST": "127.0.0.1",
+  "PORT": 8080,
+  "APIKEY": "x",
+  "API_TIMEOUT_MS": 600000,
+  "Providers": [
+    {
+      "name": "ollama",
+      "api_base_url": "http://100.92.246.90:11434/v1/chat/completions",
+      "api_key": "ollama",
+      "models": [
+        "ministral-3:8b",
+        "ministral-3:3b",
+        "deepseek-r1:14b",
+        "deepseek-r1:1.5b",
+        "llama3.2:1b"
+      ]
+    }
+    
+  ],
+  "Router": {
+    "default": "ollama,ministral-3:8b",
+    "background": "ollama,ministral-3:3b",
+    "think": "ollama,deepseek-r1:14b",
+    "longContext": "ollama,deepseek-r1:1.5b",
+    "webSearch": "ollama,llama3.2:1b"
+  },
+  "NON_INTERACTIVE_MODE": false
+}
