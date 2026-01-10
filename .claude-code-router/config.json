@@ -13,9 +13,8 @@
       "models": [
         "ministral-3:8b",
         "ministral-3:3b",
-        "deepseek-r1:14b",
-        "deepseek-r1:1.5b",
-        "llama3.2:1b"
+        "qwen2.5-coder:1.5b",
+        "gpt-oss:20b"
       ]
     }
     
@@ -23,9 +22,9 @@
   "Router": {
     "default": "ollama,ministral-3:8b",
     "background": "ollama,ministral-3:3b",
-    "think": "ollama,deepseek-r1:14b",
-    "longContext": "ollama,deepseek-r1:1.5b",
-    "webSearch": "ollama,llama3.2:1b"
+    "think": "ollama,gpt-oss:20b",
+    "longContext": "ollama,ministral-3:3b",
+    "webSearch": "ollama,qwen2.5-coder:1.5b"
   },
   "NON_INTERACTIVE_MODE": false
 }
