@@ -20,6 +20,6 @@ Make one git commit for that task only with a clear message.
 
 Do not git init, do not change remotes, do not push.
 
-ONLY WORK ON A SINGLE TASK.
+ONLY WORK ON A SINGLE TASK AT A TIME.
 
 When ALL tasks have passes true, output <promise>COMPLETE</promise>
