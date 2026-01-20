@@ -2,7 +2,7 @@
   "LOG": true,
   "CLAUDE_PATH": "/usr/bin/claude",
   "HOST": "127.0.0.1",
-  "PORT": 8080,
+  "PORT": 8099,
   "APIKEY": "x",
   "API_TIMEOUT_MS": 600000,
   "Providers": [
