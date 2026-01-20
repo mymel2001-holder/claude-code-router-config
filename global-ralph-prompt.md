@@ -8,7 +8,7 @@ Open plan.md and choose the single highest priority task where passes is false.
 
 Work on exactly ONE task: implement the change.
 
-After implementing, check your work by running the script for 60 seconds, quitting, and checking for errors
+After implementing, check your work by running the script for 60 seconds, quitting, and checking for errors.
 
 If it's a web project, use Playwright to test the service as a user would.
 
