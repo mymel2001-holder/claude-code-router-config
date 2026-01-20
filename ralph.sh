@@ -1,16 +1,26 @@
 #!/bin/bash
 
+# Determine max iterations
 if [[ -z "$1" ]]; then
-  value="infinity"
+  max_iterations=0   # 0 means infinite loop
 else
-  value="$1"
+  max_iterations="$1"
 fi
 
-for ((i=1; i<=$1; i++)); do
+i=1
+while :; do
+  # Stop if we reached max iterations (when max_iterations > 0)
+  if [[ "$max_iterations" -gt 0 && "$i" -gt "$max_iterations" ]]; then
+    echo "Reached max iterations ($max_iterations)"
+    exit 1
+  fi
+
   echo "Iteration $i"
   echo "--------------------------------"
-  
-  result=$(ccr code --dangerously-skip-permissions -p "$(cat ~/global-ralph-prompt.md)" --output-format text 2>&1) || true
+
+  result=$(ccr code --dangerously-skip-permissions \
+    -p "$(cat ~/global-ralph-prompt.md)" \
+    --output-format text 2>&1) || true
 
   echo "$result"
 
@@ -18,11 +28,10 @@ for ((i=1; i<=$1; i++)); do
     echo "All tasks complete after $i iterations."
     exit 0
   fi
-  
+
   echo ""
   echo "--- End of iteration $i ---"
   echo ""
-done
 
-echo "Reached max iterations ($1)"
-exit 1
+  ((i++))
+done
