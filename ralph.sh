@@ -18,7 +18,7 @@ while :; do
   echo "Iteration $i"
   echo "--------------------------------"
 
-  ccr code --dangerously-skip-permissions --output-format text --print "$(cat ~/global-ralph-prompt.md)" || true > .iterations.log 2>&1  
+  ccr code --dangerously-skip-permissions --output-format text -p "$(cat ~/global-ralph-prompt.md)" || true > .iterations.log 2>&1  
 
   cat ".iterations.log"
 
