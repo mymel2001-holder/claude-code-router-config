@@ -1,15 +1,9 @@
 #!/bin/bash
 
-# Determine max iterations
-if [[ -z "$1" ]]; then
-  max_iterations=0   # 0 means infinite loop
-else
-  max_iterations="$1"
-fi
+max_iterations=${1:-0}
 
 i=1
 while :; do
-  # Stop if we reached max iterations (when max_iterations > 0)
   if [[ "$max_iterations" -gt 0 && "$i" -gt "$max_iterations" ]]; then
     echo "Reached max iterations ($max_iterations)"
     exit 1
@@ -18,14 +12,19 @@ while :; do
   echo "Iteration $i"
   echo "--------------------------------"
 
-  result=$(ccr code --dangerously-skip-permissions \
-    -p "$(cat global-ralph-prompt.md)" \
-    --print 2>&1) || true
+  # We use 'ccr code' with the essential --non-interactive flag.
+  # This forces the router to execute tool calls and return the final text output.
+  result=$(ccr code \
+    --dangerously-skip-permissions \
+    --non-interactive \
+    -p "$(cat global-ralph-prompt.md)" 2>&1) || true
 
   echo "$result"
 
+  # Check for the completion tag in the returned text
   if [[ "$result" == *"<promise>COMPLETE</promise>"* ]]; then
-    echo "All tasks complete after $i iterations."
+    echo "--------------------------------"
+    echo "✅ All tasks complete after $i iterations."
     exit 0
   fi
 
@@ -35,4 +34,3 @@ while :; do
 
   ((i++))
 done
-
