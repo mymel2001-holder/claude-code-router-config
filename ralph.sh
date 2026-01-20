@@ -18,7 +18,8 @@ while :; do
   echo "Iteration $i"
   echo "--------------------------------"
 
-  result=$(ccr code --dangerously-skip-permissions \
+  result=$(npx @anthropic-ai/sandbox-runtime \
+    ccr code --dangerously-skip-permissions \
     -p "$(cat global-ralph-prompt.md)" \
     --output-format text 2>&1) || true
 
