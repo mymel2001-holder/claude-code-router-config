@@ -14,7 +14,7 @@
         "rnj-1:8b",
         "ministral-3:3b",
         "qwen2.5-coder:1.5b",
-        "qwen3:14b"
+        "sparksammy/microcoder:tiny"
       ]
     }
     
@@ -22,7 +22,7 @@
   "Router": {
     "default": "ollama,rnj-1:8b",
     "background": "ollama,ministral-3:3b",
-    "think": "ollama,qwen3:14b",
+    "think": "sparksammy/microcoder:tiny",
     "longContext": "ollama,ministral-3:3b",
     "webSearch": "ollama,qwen2.5-coder:1.5b"
   },
