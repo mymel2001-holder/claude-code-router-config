@@ -21,7 +21,7 @@
     
   ],
   "Router": {
-    "default": "ministral-3:14b",
+    "default": "ollama,ministral-3:14b",
     "background": "ollama,ministral-3:3b",
     "think": "ollama,gpt-oss:20b",
     "longContext": "ollama,ministral-3:8b",
