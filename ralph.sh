@@ -20,7 +20,7 @@ while :; do
 
   result=$(ccr code --dangerously-skip-permissions \
     -p "$(cat global-ralph-prompt.md)" \
-    --output-format text 2>&1) || true
+    --print 2>&1) || true
 
   echo "$result"
 
