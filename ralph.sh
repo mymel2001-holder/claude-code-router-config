@@ -19,7 +19,7 @@ while :; do
   echo "--------------------------------"
 
   result=$(ccr code --dangerously-skip-permissions \
-    -p "$(cat ~/global-ralph-prompt.md)" \
+    -p "$(cat ralph-prompt.md)" \
     --output-format text 2>&1) || true
 
   echo "$result"
