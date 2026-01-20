@@ -1,11 +1,14 @@
 #!/bin/bash
 
-# Suppress the DeprecationWarning logs
+# Suppress Node warnings
 export NODE_OPTIONS='--no-deprecation'
 
-max_iterations=${1:-0}
+# Ensure Ctrl+C kills the whole loop
+trap "exit" INT
 
+max_iterations=${1:-0}
 i=1
+
 while :; do
   if [[ "$max_iterations" -gt 0 && "$i" -gt "$max_iterations" ]]; then
     echo "Reached max iterations ($max_iterations)"
@@ -15,15 +18,12 @@ while :; do
   echo "Iteration $i"
   echo "--------------------------------"
 
-  # Switch to -m (message) and ensure output-format is text
-  # We remove --non-interactive since it's not supported here
-  result=$(ccr code --dangerously-skip-permissions \
-    --output-format text \
-    -m "$(cat global-ralph-prompt.md)" 2>&1) || true
+  ccr code --dangerously-skip-permissions --output-format text --print "$(cat ~/global-ralph-prompt.md)" || true <<'EOF' 2>&1 | tee -a ".iterations.log"
 
-  echo "$result"
+  cat ".iterations.log"
 
-  if [[ "$result" == *"<promise>COMPLETE</promise>"* ]]; then
+  # Logic check for the promise
+  if [[ "$(cat .iterations.log)" == *"<promise>COMPLETE</promise>"* ]]; then
     echo "--------------------------------"
     echo "✅ All tasks complete after $i iterations."
     exit 0
