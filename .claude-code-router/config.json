@@ -14,7 +14,7 @@
         "rnj-1:8b",
         "ministral-3:3b",
         "qwen2.5-coder:1.5b",
-        "sparksammy/microcoder:tiny"
+        "deepseek-r1:8b"
       ]
     }
     
