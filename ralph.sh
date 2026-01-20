@@ -1,5 +1,8 @@
 #!/bin/bash
 
+ccr start
+sleep 5
+
 max_iterations=${1:-0}
 
 i=1
