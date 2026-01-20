@@ -11,19 +11,20 @@
       "api_base_url": "http://100.126.87.101:11434/v1/chat/completions",
       "api_key": "ollama",
       "models": [
-        "rnj-1:8b",
+        "glm-4.7-flash:q4_K_M",
         "ministral-3:3b",
         "qwen2.5-coder:1.5b",
-        "gpt-oss:20b"
+        "gpt-oss:20b",
+        "ministral-3:8b"
       ]
     }
     
   ],
   "Router": {
-    "default": "ollama,rnj-1:8b",
+    "default": "ollama,glm-4.7-flash:q4_K_M",
     "background": "ollama,ministral-3:3b",
     "think": "ollama,gpt-oss:20b",
-    "longContext": "ollama,ministral-3:3b",
+    "longContext": "ollama,ministral-3:8b",
     "webSearch": "ollama,qwen2.5-coder:1.5b"
   },
   "NON_INTERACTIVE_MODE": false
