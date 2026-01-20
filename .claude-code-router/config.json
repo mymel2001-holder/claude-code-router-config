@@ -14,7 +14,7 @@
         "rnj-1:8b",
         "ministral-3:3b",
         "qwen2.5-coder:1.5b",
-        "deepseek-r1:8b"
+        "gpt-oss:20b"
       ]
     }
     
@@ -22,7 +22,7 @@
   "Router": {
     "default": "ollama,rnj-1:8b",
     "background": "ollama,ministral-3:3b",
-    "think": "ollama,deepseek-r1:8b",
+    "think": "ollama,gpt-oss:20b",
     "longContext": "ollama,ministral-3:3b",
     "webSearch": "ollama,qwen2.5-coder:1.5b"
   },
