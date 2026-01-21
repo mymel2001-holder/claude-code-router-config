@@ -1,21 +1,23 @@
-  "Providers": [
+{
+"Providers": [
     {
       "name": "ollama",
       "api_base_url": "http://100.126.87.101:11434/v1/chat/completions",
       "api_key": "ollama",
       "models": [
-        "ministal-3:8b",
+        "ministral-3:8b",
         "qwen2.5-coder:3b",
         "qwen2.5-coder:1.5b",
-        "qwen3-vl:8b"
+        "qwen3-vl:8b",
+        "ministral-3:14b"
       ]
     }
   ],
   "Router": {
-    "default": "ollama,ministal-3:14b",
+    "default": "ollama,ministral-3:14b",
     "background": "ollama,ministral-3:8b",
     "think": "ollama,qwen3-vl:8b",
-    "longContext": "ollama,ministal-3:8b",
+    "longContext": "ollama,ministral-3:8b",
     "webSearch": "ollama,qwen2.5-coder:1.5b"
   },
   "NON_INTERACTIVE_MODE": true
