@@ -17,8 +17,9 @@ while :; do
 
   echo "Iteration $i"
   echo "--------------------------------"
-  OUTPUT=$(ANTHROPIC_AUTH_TOKEN=ollama ANTHROPIC_BASE_URL=http://100.126.87.101:11434 claude --model ministral-3:8b --dangerously-skip-permissions --print "$(cat ~/global-ralph-prompt.md)" 2>&1 | tee /dev/stderr) || true
+  OUTPUT=$(ANTHROPIC_AUTH_TOKEN=ollama ANTHROPIC_BASE_URL=http://100.126.87.101:11434 claude --model ministral-3:8b --dangerously-skip-permissions --print "$(cat ~/global-ralph-prompt.md)") || true
 
+  echo $OUTPUT > activity.md
 
   # Logic check for the promise
   if [[ "$OUTPUT" == *"<promise>COMPLETE</promise>"* ]]; then
@@ -33,3 +34,4 @@ while :; do
 
   ((i++))
 done
+
