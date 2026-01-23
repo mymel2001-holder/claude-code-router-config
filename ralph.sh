@@ -17,13 +17,11 @@ while :; do
 
   echo "Iteration $i"
   echo "--------------------------------"
+  OUTPUT=$(ANTHROPIC_AUTH_TOKEN=ollama ANTHROPIC_BASE_URL=http://100.126.87.101:11434 claude --model ministral-3:8b --dangerously-skip-permissions --print "$(cat ~/global-ralph-prompt.md)" 2>&1 | tee /dev/stderr) || true
 
-  ccr code --dangerously-skip-permissions --output-format text -p "$(cat ~/global-ralph-prompt.md)" || true > .iterations.log 2>&1  
-
-  cat ".iterations.log"
 
   # Logic check for the promise
-  if [[ "$(cat .iterations.log)" == *"<promise>COMPLETE</promise>"* ]]; then
+  if [[ "$OUTPUT" == *"<promise>COMPLETE</promise>"* ]]; then
     echo "--------------------------------"
     echo "✅ All tasks complete after $i iterations."
     exit 0
@@ -35,4 +33,3 @@ while :; do
 
   ((i++))
 done
-
